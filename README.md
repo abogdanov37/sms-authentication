@@ -4,6 +4,13 @@ If you want to add two-factor SMS authentication to your application you should 
 1. Clone this repository and execute command `gradlew build`
 2. Copy `sms-authentication.jar` from **repo_clone_folder/build/lib** folder to Tomcat **CATALINA_HOME/lib** folder or add task to your build script wich makes this operation
 3. Configure your `<Context>` tag in **CATALINA_HOME/conf/server.xml** as follows:
+   ```
+          <Realm xmlns="" className="io.codesolver.auth.SMSRealm" dataSourceName="xyz" localDataSource="true" roleNameCol="GROUP_NAME" userCredCol="USR_PASSWD" 
+                 userNameCol="USR_NAME" userRoleTable="MTD_GROUPS" userTable="MTD_USERS" codeTable="MTD_CODE">
+            ...
+          </Realm>
+          <Valve xmlns="" className="io.codesolver.SMSAuthenticator"/>
+   ```
 4. Add table wich will contain generated codes. Table name should be the same as in the above example. See attribute `codeTable` of tag `<Realm>`. Table structure should be:
    ```
    id:numeric - Primary Key
