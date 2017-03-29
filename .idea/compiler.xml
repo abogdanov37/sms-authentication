@@ -19,8 +19,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="tomcat.sms.authenticator_main" target="1.5" />
-      <module name="tomcat.sms.authenticator_test" target="1.5" />
+      <module name="sms-authentication_main" target="1.8" />
+      <module name="sms-authentication_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
