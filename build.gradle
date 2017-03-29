@@ -1,0 +1,16 @@
+group 'sms-authenticator'
+version '1.1'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.5.11'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
