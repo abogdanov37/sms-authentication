@@ -46,7 +46,7 @@ public class SMSRealm extends DataSourceRealm {
         // Create the code PreparedStatement string
         StringBuilder temp = new StringBuilder("SELECT Code FROM ");
         temp.append(codeTable);
-        temp.append(" WHERE user = ? and dateFrom <= ? and dateTo < ?");
+        temp.append(" WHERE usr_name = ? and dateFrom <= ? and dateTo > ?");
         preparedCode = temp.toString();
 
         super.startInternal();
@@ -54,11 +54,11 @@ public class SMSRealm extends DataSourceRealm {
 
     private PreparedStatement code(Connection dbConnection, String username, Date ta)
             throws SQLException {
-        java.sql.Date point = new java.sql.Date(ta.getTime());
+        Timestamp point = new Timestamp(ta.getTime());
         PreparedStatement code = dbConnection.prepareStatement(preparedCode);
         code.setString(1, username);
-        code.setDate(2, point);
-        code.setDate(3, point);
+        code.setTimestamp(2, point);
+        code.setTimestamp(3, point);
         return (code);
     }
 
